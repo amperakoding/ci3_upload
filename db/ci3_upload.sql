@@ -35,7 +35,7 @@ CREATE TABLE `berita` (
   `file_foto` text,
   `file_foto_thumb` text,
   `file_foto_size` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `berita`
@@ -55,12 +55,12 @@ INSERT INTO `berita` (`id_berita`, `judul_berita`, `deskripsi_berita`, `file_fot
 
 CREATE TABLE `buku` (
   `id_buku` int NOT NULL,
-  `judul_buku` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `judul_buku` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `penulis_buku` varchar(100) DEFAULT NULL,
   `file_foto` text,
-  `file_foto_ext` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `file_foto_ext` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `file_foto_size` char(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `buku`
@@ -79,11 +79,11 @@ INSERT INTO `buku` (`id_buku`, `judul_buku`, `penulis_buku`, `file_foto`, `file_
 
 CREATE TABLE `produk` (
   `id_produk` int NOT NULL,
-  `judul_produk` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `judul_produk` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `berat_produk` int DEFAULT NULL,
   `file_foto` text,
   `file_foto_thumb` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `produk`
@@ -102,8 +102,8 @@ INSERT INTO `produk` (`id_produk`, `judul_produk`, `berat_produk`, `file_foto`, 
 CREATE TABLE `produk_foto` (
   `id_foto` int NOT NULL,
   `produk_id` int DEFAULT NULL,
-  `foto_lainnya` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `foto_lainnya` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `produk_foto`
