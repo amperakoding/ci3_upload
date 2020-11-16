@@ -84,8 +84,6 @@ class Berita extends CI_Controller
           $fileExtension     = $this->upload->data('file_ext');
           $fileSize          = $this->upload->data('file_size');
 
-          $foto = $this->upload->data();
-
           // panggil library image manipulation CI supaya dapat membuat thumbnail
           $config['image_library']    = "gd2";
           // ambil sumber foto yang akan diresize
@@ -191,6 +189,19 @@ class Berita extends CI_Controller
 
           $this->update($this->input->post('id_berita'));
         } else {
+          // siapkan data untuk ambil kolom file_foto untuk dihapus dari direktori file
+          $data               = $this->Berita_model->get_by_id($this->input->post('id_berita'));
+          // siapkan url foto beserta namanya
+          $file_foto          = "assets/images/berita/" . $data->file_foto;
+          $file_foto_thumb    = "assets/images/berita/" . $data->file_foto_thumb;
+
+          // cek apabila file memang ada dengan file_exists maka hapus dengan fungsi unlink
+          if (file_exists($file_foto)) {
+            // Hapus foto dan thumbnail
+            unlink($file_foto);
+            unlink($file_foto_thumb);
+          }
+          
           // ambil nama file yang sudah diatur untuk disimpan ke dalam tabel di db
           // file_name dan file_ext dibawah ini diambil dari helper method data dari CI yg bisa diliat lengkapnya pada user_guide
           // user_guide/libraries/file_uploading.html?highlight=upload#CI_Upload::data
@@ -198,8 +209,6 @@ class Berita extends CI_Controller
           $fileName          = $this->upload->data('file_name');
           $fileExtension     = $this->upload->data('file_ext');
           $fileSize          = $this->upload->data('file_size');
-
-          $foto = $this->upload->data();
 
           // panggil library image manipulation CI supaya dapat membuat thumbnail
           $config['image_library']    = "gd2";
@@ -219,25 +228,12 @@ class Berita extends CI_Controller
           $this->load->library('image_lib', $config);
           $this->image_lib->resize();
 
-          // siapkan data untuk ambil kolom file_foto untuk dihapus dari direktori file
-          $data               = $this->Berita_model->get_by_id($this->input->post('id_berita'));
-          // siapkan url foto beserta namanya
-          $file_foto          = "assets/images/berita/" . $data->file_foto;
-          $file_foto_thumb    = "assets/images/berita/" . $data->file_foto_thumb;
-
-          // cek apabila file memang ada dengan file_exists maka hapus dengan fungsi unlink
-          if (file_exists($file_foto)) {
-            // Hapus foto dan thumbnail
-            unlink($file_foto);
-            unlink($file_foto_thumb);
-          }
-
           // siapkan data dalam format array
           $data = array(
             'judul_berita'        => $this->input->post('judul_berita'),
             'deskripsi_berita'    => $this->input->post('deskripsi_berita'),
             'file_foto'           => $fileName,
-            'file_foto_thumb'     => $namaFile.'_thumb'.$fileExtension,
+            'file_foto_thumb'     => $namaFile . '_thumb' . $fileExtension,
             'file_foto_size'      => $fileSize,
           );
 
