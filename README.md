@@ -11,4 +11,9 @@ Cara penggunaan:
 3. Jalankan project dengan URL: http://localhost/ci3_upload
 4. Bagi yang mendapatkan error pada saat import db karena perbedaan collation maka silahkan disesuaikan saja dengan cara buka file dbnya dengan notepad lalu ganti collation yang ada dari db dengan yang Anda pakai.
 
+CATATAN:
+1. Project ini berjalan normal dengan LAMPP stack, php 7.4.3, apache 2.4.41, dan mysql 8.0.22.
+2. Siapapun diperbolehkan untuk berkontribusi pada project ini.
+3. Source code bebas untuk dimodifikasi dan disebarluaskan.
+
 Semoga bermanfaat.
