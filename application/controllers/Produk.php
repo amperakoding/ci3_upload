@@ -253,6 +253,7 @@ class Produk extends CI_Controller
           $error = array('error' => $this->upload->display_errors());
           $this->session->set_flashdata('message', $error['error']);
 
+          // kembali ke halaman update berdasarkan id_produk
           $this->update($this->input->post('id_produk'));
         } else {
           // siapkan data untuk ambil kolom file_foto untuk dihapus dari direktori file
