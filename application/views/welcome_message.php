@@ -71,8 +71,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<div id="body">
 		<p>Project ini berisi tentang bagaimana cara upload file menggunakan Codeigniter 3 (3.1.11) dan MySQL.</p>
-		<p>Semoga bermanfaat.</p>
-
 		<p>
 			Anda dapat mengakses contoh upload yang sudah ada sebagai berikut:
 			<ul>
@@ -81,6 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<li>Upload banyak file dengan thumbnail, <a href="<?php echo base_url('produk') ?>">klik disini</a>.</li>
 			</ul>
 		</p>
+		<p>Semoga bermanfaat.</p>
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
