@@ -183,11 +183,6 @@ class Buku extends CI_Controller
 
           $this->update($this->input->post('id_buku'));
         } else {
-          // siapkan nama, ekstensi/tipe file dan size/ukuran file
-          $fileName           = $this->upload->data('file_name');
-          $fileExtension      = $this->upload->data('file_ext');
-          $fileSize           = $this->upload->data('file_size');
-
           // siapkan data untuk ambil kolom file_foto untuk dihapus dari direktori file
           $data               = $this->Buku_model->get_by_id($this->input->post('id_buku'));
           // siapkan url foto beserta namanya
@@ -198,6 +193,11 @@ class Buku extends CI_Controller
             // Hapus foto dan thumbnail
             unlink($file_foto);
           }
+
+          // siapkan nama, ekstensi/tipe file dan size/ukuran file
+          $fileName           = $this->upload->data('file_name');
+          $fileExtension      = $this->upload->data('file_ext');
+          $fileSize           = $this->upload->data('file_size');
 
           // siapkan data dalam format array
           $data = array(
