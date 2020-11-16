@@ -14,6 +14,8 @@
 
   <a href="<?php echo base_url('buku/create') ?>">Tambah Data Buku</a>
 
+  <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');} ?>
+
   <hr>
 
   <table border="1">
