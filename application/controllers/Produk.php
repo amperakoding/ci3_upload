@@ -297,7 +297,7 @@ class Produk extends CI_Controller
             'file_foto_thumb'     => $namaFile . '_thumb' . $fileExtension,
           );
 
-          // eksekusi query INSERT
+          // eksekusi query
           $this->Produk_model->update($this->input->post('id_produk'), $data);
 
           // apabila upload foto tambahan
