@@ -75,8 +75,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			Anda dapat mengakses contoh upload yang sudah ada sebagai berikut:
 			<ul>
 				<li>Upload file super sederhana, <a href="<?php echo base_url('buku') ?>">klik disini</a>.</li>
-				<li>Upload file dengan thumbnail, <a href="<?php echo base_url('berita') ?>">klik disini</a>.</li>
-				<li>Upload banyak file dengan thumbnail, <a href="<?php echo base_url('produk') ?>">klik disini</a>.</li>
+				<li>Upload file foto dengan thumbnail, <a href="<?php echo base_url('berita') ?>">klik disini</a>.</li>
+				<li>Upload banyak file foto dengan thumbnail pada foto utama, <a href="<?php echo base_url('produk') ?>">klik disini</a>.</li>
 			</ul>
 		</p>
 		<p>Semoga bermanfaat.</p>
