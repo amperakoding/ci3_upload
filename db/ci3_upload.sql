@@ -1,59 +1,108 @@
--- MySQL dump 10.13  Distrib 8.0.22, for Linux (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.9.5deb2
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: ci3_upload
--- ------------------------------------------------------
--- Server version	8.0.22-0ubuntu0.20.04.2
+-- Host: localhost:3306
+-- Generation Time: Nov 16, 2020 at 08:14 AM
+-- Server version: 8.0.22-0ubuntu0.20.04.2
+-- PHP Version: 7.4.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `ci3_upload`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `berita`
+--
+
+CREATE TABLE `berita` (
+  `id_berita` int NOT NULL,
+  `judul_berita` varchar(250) DEFAULT NULL,
+  `deskripsi_berita` text,
+  `file_foto` text,
+  `file_foto_thumb` text,
+  `file_foto_size` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`id_berita`, `judul_berita`, `deskripsi_berita`, `file_foto`, `file_foto_thumb`, `file_foto_size`) VALUES
+(3, 'thumb lagi', 'thumb lagithumb lagi', 'thumb-lagi20201116080931.jpg', 'thumb-lagi20201116080931_thumb.jpg', 121),
+(4, 'thumb lagithumb lagi', 'thumb lagithumb lagithumb lagithumb lagi', 'thumb-lagithumb-lagi20201116080942.jpg', 'thumb-lagithumb-lagi20201116080942_thumb.jpg', 232),
+(5, 'thumb lagi11', 'thumb lagi1111', 'thumb-lagi1120201116080607.jpg', 'thumb-lagi1120201116080607_thumb.jpg', 123);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `buku`
 --
 
-DROP TABLE IF EXISTS `buku`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `buku` (
-  `id_buku` int NOT NULL AUTO_INCREMENT,
+  `id_buku` int NOT NULL,
   `judul_buku` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `penulis_buku` varchar(100) DEFAULT NULL,
   `file_foto` text,
   `file_foto_ext` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `file_foto_size` char(10) DEFAULT NULL,
-  PRIMARY KEY (`id_buku`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `file_foto_size` char(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `buku`
 --
 
-LOCK TABLES `buku` WRITE;
-/*!40000 ALTER TABLE `buku` DISABLE KEYS */;
-INSERT INTO `buku` VALUES (2,'What is Lorem Ipsum?','Si Ipsum','what-is-lorem-ipsum20201116070009.jpg','.jpg','27.85'),(3,'Meneketehe','Hektem','meneketehe20201116070022.jpg','.jpg','25.59'),(4,'Why do we use it?','Si Use It','why-do-we-use-it20201116070054.jpg','.jpg','21.85');
-/*!40000 ALTER TABLE `buku` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `buku` (`id_buku`, `judul_buku`, `penulis_buku`, `file_foto`, `file_foto_ext`, `file_foto_size`) VALUES
+(2, 'What is Lorem Ipsum?', 'Si Ipsum', 'what-is-lorem-ipsum20201116070009.jpg', '.jpg', '27.85'),
+(3, 'Meneketehe', 'Hektem', 'meneketehe20201116070022.jpg', '.jpg', '25.59'),
+(4, 'Why do we use it?', 'Si Use It', 'why-do-we-use-it20201116070054.jpg', '.jpg', '21.85');
 
 --
--- Dumping routines for database 'ci3_upload'
+-- Indexes for dumped tables
 --
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id_berita`);
+
+--
+-- Indexes for table `buku`
+--
+ALTER TABLE `buku`
+  ADD PRIMARY KEY (`id_buku`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `id_berita` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `buku`
+--
+ALTER TABLE `buku`
+  MODIFY `id_buku` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2020-11-16  7:03:03
