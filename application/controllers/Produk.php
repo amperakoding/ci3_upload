@@ -359,8 +359,7 @@ class Produk extends CI_Controller
         }
       }
       // apabila upload foto tambahan saja       
-      elseif(!empty($_FILES["foto_lainnya"]["name"]))
-      {
+      elseif (!empty($_FILES["foto_lainnya"]["name"])) {
         // menghitung jumlah file yang akan diupload
         $filesCount   = count($_FILES['foto_lainnya']['name']);
         // atur maksimum upload file size
@@ -414,8 +413,7 @@ class Produk extends CI_Controller
           $this->session->set_flashdata('message', 'Data berhasil disimpan');
           redirect('produk');
         }
-      }
-      else // Jika file upload kosong
+      } else // Jika file upload kosong
       {
         $data = array(
           'judul_produk'          => $this->input->post('judul_produk'),
@@ -433,21 +431,30 @@ class Produk extends CI_Controller
 
   public function delete($id)
   {
-    $delete = $this->Produk_model->get_by_id($id);
+    $file_foto          = $this->Produk_model->get_by_id($id);
+    $file_foto_lainnya  = $this->Produk_model->get_foto_lainnya_by_id_produk($id);
 
     // simpan lokasi gambar dalam variable
-    $file_foto        = "assets/images/produk/" . $delete->file_foto;
-    $file_foto_thumb  = "assets/images/produk/" . $delete->file_foto_thumb;
+    $foto          = "assets/images/produk/" . $file_foto->file_foto;
+    $foto_thumb    = "assets/images/produk/" . $file_foto->file_foto_thumb;
 
-    if (file_exists($file_foto)) {
+    if (file_exists($foto)) {
       // Hapus foto dan thumbnail
-      unlink($file_foto);
-      unlink($file_foto_thumb);
+      unlink($foto);
+      unlink($foto_thumb);
+    }
+
+    // looping data foto berdasarkan id_produk yg akan dihapus
+    foreach ($file_foto_lainnya as $data) {
+      $data  = "assets/images/produk_lainnya/" . $data->foto_lainnya;
+      // Hapus foto dan thumbnail
+      unlink($data);
     }
 
     // Jika data ditemukan, maka hapus foto dan record nya
-    if ($delete) {
+    if ($file_foto) {
       $this->Produk_model->delete($id);
+      $this->Produk_model->delete_foto_lainnya_by_id_produk($id);
 
       $this->session->set_flashdata('message', 'Data berhasil dihapus');
       redirect('produk');

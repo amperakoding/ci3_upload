@@ -35,6 +35,13 @@ class Produk_model extends CI_Model
     return $this->db->get('produk_foto')->row();
   }
 
+  function get_foto_lainnya_by_id_produk($id)
+  {
+    $this->db->where('produk_id', $id);
+
+    return $this->db->get('produk_foto')->result();
+  }
+
   // tambah data
   function insert($data)
   {
@@ -65,6 +72,13 @@ class Produk_model extends CI_Model
   function delete_foto_lainnya_by_id_foto($id)
   {
     $this->db->where('id_foto', $id);
+
+    $this->db->delete('produk_foto');
+  }
+
+  function delete_foto_lainnya_by_id_produk($id)
+  {
+    $this->db->where('produk_id', $id);
 
     $this->db->delete('produk_foto');
   }

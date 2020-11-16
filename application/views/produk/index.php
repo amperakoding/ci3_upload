@@ -14,7 +14,7 @@
 
   <a href="<?php echo base_url('produk/create') ?>">Tambah Data Produk</a>
 
-  <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');} ?>
+  <p><?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');} ?></p>
 
   <hr>
 
